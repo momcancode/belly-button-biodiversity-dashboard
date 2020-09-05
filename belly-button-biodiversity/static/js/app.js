@@ -78,13 +78,13 @@ function init() {
 		
 		Plotly.newPlot('bubble', bubbleData, bubbleLayout);
 
-	// DEMOGRAPHIC INFO
-		demoDefault = data.metadata.filter(sample => sample.id === 940)[0];
-		console.log(demoDefault);
+	// // DEMOGRAPHIC INFO
+	// 	demoDefault = data.metadata.filter(sample => sample.id === 940)[0];
+	// 	console.log(demoDefault);
 
-		// Display each key-value pair from the metadata JSON object
+	// 	// Display each key-value pair from the metadata JSON object
 		
-		Object.entries(demoDefault).forEach(([key, value]) => d3.select("#sample-metadata").append("p").text(`${key}: ${value}`));
+	// 	Object.entries(demoDefault).forEach(([key, value]) => d3.select("#sample-metadata").append("p").text(`${key}: ${value}`));
 
 }
 
