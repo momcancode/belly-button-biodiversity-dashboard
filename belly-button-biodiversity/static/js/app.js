@@ -21,25 +21,19 @@ function init() {
 	console.log(defaultDataset);
 
 	// Select the top 10 OTUs for the ID with their sample_values, otu_ids and otu_labels
-	sampleValuesToPlot = defaultDataset[0].sample_values.slice(0, 10).reverse();
-	otuIdsToPlot = defaultDataset[0].otu_ids.slice(0, 10).reverse();
-	otuLabelsToPlot = defaultDataset[0].otu_labels.slice(0, 10).reverse();
+	sampleValuesDefault = defaultDataset[0].sample_values.slice(0, 10).reverse();
+	otuIdsDefault = defaultDataset[0].otu_ids.slice(0, 10).reverse();
+	otuLabelsDefault = defaultDataset[0].otu_labels.slice(0, 10).reverse();
 
-	console.log(sampleValuesToPlot);
-	console.log(otuIdsToPlot);
-	console.log(otuLabelsToPlot);
+	console.log(sampleValuesDefault);
+	console.log(otuIdsDefault);
+	console.log(otuLabelsDefault);
 
-	// // Slice the first 10 objects for plotting
-	// defaultDataset = defaultDataset.slice(0, 10);
-
-	// // Reverse the array due to Plotly's defaults
-	// defaultDataset = defaultDataset.reverse();
-
-	// Trace1 for the default Data
+	// Add trace for the default Data
 	var trace1 = {
-		x: sampleValuesToPlot,
-		y: otuIdsToPlot.map(outId => `OTU ${outId}`),
-		text: otuLabelsToPlot,
+		x: sampleValuesDefault,
+		y: otuIdsDefault.map(outId => `OTU ${outId}`),
+		text: otuLabelsDefault,
 		name: "id940",
 		type: "bar",
 		orientation: "h"
@@ -59,42 +53,35 @@ function init() {
 
 init();
 
-// // Call updateBar() when a change takes place to the DOM
-// d3.selectAll("#selDataset").on("change", updateBar);
+// Call updateBar() when a change takes place to the DOM
+d3.selectAll("#selDataset").on("change", updateBar);
 
-// // This function is called when a dropdown menu item is selected
-// function updateBar() {
+// This function is called when a dropdown menu item is selected
+function updateBar() {
 
-// 	// Use D3 to select the dropdown menu
-// 	var dropdownMenu = d3.select("#selDataset");
+	// Use D3 to select the dropdown menu
+	var inputElement = d3.select("#selDataset");
 
-// 	// Assign the value of the dropdown menu option to a variable
-// 	var dataset = dropdownMenu.property("value");
+	// Assign the value of the dropdown menu option to a variable
+	var inputValue = inputElement.property("value");
 
-// 	// Initialize x and y arrays
-// 	var x = [];
-// 	var y = [];
+	// Filter the dataset based on inputValue ID
+	dataset = data.samples.filter(sample => sample.id === inputValue);
+	console.log(dataset);
 
-// 	switch(dataset) {
-// 		case "dataset1":
-// 			x = dataset1.x;
-// 			y = dataset1.y;
-// 			break;
-// 		case "dataset2":
-// 			x = dataset2.x;
-// 			y = dataset2.y;
-// 			break;
-// 		case "dataset3":
-// 			x = dataset3.x;
-// 			y = dataset3.y;
-// 			break;
-// 		default:
-// 			x = defaultDataset.x;
-// 			y = defaultDataset.y;
-// 			break;
-// 	}
+	// Select the top 10 OTUs for the ID with their sample_values, otu_ids and otu_labels
+	// Add them into different arrays
+	sampleValueDropdown = dataset[0].sample_values.slice(0, 10).reverse();
+	x = sampleValueDropdown;
 
-// 	Plotly.restyle("plot", "x", [x]);
-// 	Plotly.restyle("plot", "x", [y]);
-// }
+	otuIdDropdown = dataset[0].otu_ids.slice(0, 10).reverse();
+	y = otuIdDropdown.map(outId => `OTU ${outId}`);
+
+	otuLabelsText = dataset[0].otu_labels.slice(0, 10).reverse();
+	text = otuLabelsText;
+
+	Plotly.restyle("bar", "x", [x]);
+	Plotly.restyle("bar", "y", [y]);
+	Plotly.restyle("bar", "text", [text]);
+}
 })
