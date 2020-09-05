@@ -85,7 +85,36 @@ d3.json("../../samples.json").then((importedData) => {
 		Object.entries(demoDefault).forEach(([key, value]) => d3.select("#sample-metadata").append("p").text(`${key}: ${value}`));
 
 		// ADVANCED CHALLENGE: GAUGE CHART
+		// Get the washing frequency value for the default test ID
+		var wfreqDefault = demoDefault.wfreq;
+
+		var gaugeData = [
+			{
+				domain: { x: [0, 1], y: [0, 1] },
+				value: wfreqDefault,
+				title: { text: "Belly Button Washing Frequency" },
+				type: "indicator",
+				mode: "gauge+number",
+				gauge: {
+					axis: { range: [null, 9] },
+					steps: [
+						{ range: [0, 1], color: "lightgray" },
+						{ range: [1, 2], color: "lightgray" },
+						{ range: [2, 3], color: "lightgray" },
+						{ range: [3, 4], color: "lightgray" },
+						{ range: [4, 5], color: "lightgray" },
+						{ range: [5, 6], color: "lightgray" },
+						{ range: [6, 7], color: "lightgray" },
+						{ range: [7, 8], color: "lightgray" },
+						{ range: [8, 9], color: 'rgba(14, 127, 0, .5)' },
+					],
+				}
+			}
+		];
 		
+		var gaugeLayout = { width: 600, height: 450, margin: { t: 0, b: 0 } };
+		
+		Plotly.newPlot('gauge', gaugeData, gaugeLayout);
 	}
 
 	init();
