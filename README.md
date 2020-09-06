@@ -22,7 +22,7 @@ The dataset reveals that a small handful of microbial species (also called opera
 
 6. Update all of the plots any time that a new sample is selected.
 
-7. Deploy the app to [GitHub Pages]().
+7. Deploy the app to [GitHub Pages](https://momcancode.github.io/plotly-challenge/).
 
 
 ### About the Data
