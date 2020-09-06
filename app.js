@@ -40,7 +40,6 @@ d3.json("data/samples.json").then((importedData) => {
 			x: sampleValuesDefault,
 			y: otuIdsDefault.map(outId => `OTU ${outId}`),
 			text: otuLabelsDefault,
-			name: "id940",
 			type: "bar",
 			orientation: "h"
 		};
