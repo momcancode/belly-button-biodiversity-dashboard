@@ -92,21 +92,21 @@ d3.json("../../samples.json").then((importedData) => {
 			{
 				domain: { x: [0, 1], y: [0, 1] },
 				value: wfreqDefault,
-				title: { text: "Belly Button Washing Frequency" },
+				title: {text: '<b>Belly Button Washing Frequency</b> <br> Scrubs per week'},
 				type: "indicator",
 				mode: "gauge+number",
 				gauge: {
 					axis: { range: [null, 9] },
 					steps: [
-						{ range: [0, 1], color: "lightgray" },
-						{ range: [1, 2], color: "lightgray" },
-						{ range: [2, 3], color: "lightgray" },
-						{ range: [3, 4], color: "lightgray" },
-						{ range: [4, 5], color: "lightgray" },
-						{ range: [5, 6], color: "lightgray" },
-						{ range: [6, 7], color: "lightgray" },
-						{ range: [7, 8], color: "lightgray" },
-						{ range: [8, 9], color: 'rgba(14, 127, 0, .5)' },
+						{ range: [0, 1], color: 'rgb(248, 243, 236)' },
+						{ range: [1, 2], color: 'rgb(244, 241, 229)' },
+						{ range: [2, 3], color: 'rgb(233, 230, 202)' },
+						{ range: [3, 4], color: 'rgb(229, 231, 179)' },
+						{ range: [4, 5], color: 'rgb(213, 228, 157)' },
+						{ range: [5, 6], color: 'rgb(183, 204, 146)' },
+						{ range: [6, 7], color: 'rgb(140, 191, 136)' },
+						{ range: [7, 8], color: 'rgb(138, 187, 143)' },
+						{ range: [8, 9], color: 'rgb(133, 180, 138)' },
 					],
 				}
 			}
