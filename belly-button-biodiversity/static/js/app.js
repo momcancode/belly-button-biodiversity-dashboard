@@ -168,5 +168,10 @@ d3.json("../../samples.json").then((importedData) => {
 
 		// Display each key-value pair from the metadata JSON object
 		Object.entries(metainfo).forEach(([key, value]) => d3.select("#sample-metadata").append("p").text(`${key}: ${value}`));
+
+		// ADVANCED CHALLENGE: GAUGE CHART
+		var wfreq = metainfo.wfreq;
+
+		Plotly.restyle('gauge', "value", wfreq);
 	}
 });
