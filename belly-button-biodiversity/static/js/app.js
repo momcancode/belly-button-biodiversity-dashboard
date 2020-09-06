@@ -50,7 +50,12 @@ d3.json("../../samples.json").then((importedData) => {
 
 		// Apply the group bar mode to the layout
 		var barlayout = {
-			title: `Top 10 OTUs found in selected Test Subject ID No`,
+			title: `<b>Top 10 OTUs found in selected Test Subject ID No<b>`,
+			xaxis: { title: "Sample Value"},
+			yaxis: { title: "OTU ID"},
+			autosize: false,
+			width: 450,
+			height: 600
 		}
 
 		// Render the plot to the div tag with id "bar"
@@ -71,7 +76,9 @@ d3.json("../../samples.json").then((importedData) => {
 		var bubbleData = [trace2];
 		
 		var bubbleLayout = {
-			title: 'Bubble Chart displaying sample values of OTU IDs of the selected individual',
+			title: '<b>Bubble Chart displaying sample values of OTU IDs of the selected individual<b>',
+			xaxis: { title: "OTU ID"},
+			yaxis: { title: "Sample Value"}, 
 			showlegend: false,
 		};
 		
@@ -82,7 +89,9 @@ d3.json("../../samples.json").then((importedData) => {
 		console.log(demoDefault);
 
 		// Display each key-value pair from the metadata JSON object
-		Object.entries(demoDefault).forEach(([key, value]) => d3.select("#sample-metadata").append("p").text(`${key}: ${value}`));
+		Object.entries(demoDefault).forEach(
+			([key, value]) => d3.select("#sample-metadata")
+													.append("p").text(`${key.toUpperCase()}: ${value}`));
 
 		// ADVANCED CHALLENGE: GAUGE CHART
 		// Get the washing frequency value for the default test ID
