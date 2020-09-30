@@ -1,4 +1,4 @@
-# Plot.ly Assignment - Belly Button Biodiversity
+# Plot.ly Challenge - Belly Button Biodiversity
 
 ## Where does the data come from?
 
